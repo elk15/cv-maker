@@ -3,6 +3,18 @@
   max-width: 1200px;
   min-height: 100vh;
   gap: 30px;
-  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+#edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  #preview-container {
+    display: none;
+  }
 }
 

@@ -1,0 +1,12 @@
+li {
+    display: flex;
+    border-bottom: 2px solid rgb(236, 236, 236);
+    padding: 15px;
+    border-top: 2px solid rgb(236, 236, 236);
+    cursor: pointer;
+}
+
+li .title {
+    font-weight: 500;
+    color: #001250;
+}

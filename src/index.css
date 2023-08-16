@@ -6,6 +6,7 @@
   box-sizing: border-box;
   list-style: none;
   font-family: 'Roboto', sans-serif;
+  color: #200e32;
 }
 
 #root {
@@ -15,5 +16,4 @@
   align-items: center;
   background-color: #eef0f4;
 }
-
 

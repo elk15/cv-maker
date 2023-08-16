@@ -1,0 +1,15 @@
+#personal-info .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#edit-personal-info-btn {
+    border-radius: 100%;
+    padding: 7px;
+    border: none;
+    background: linear-gradient(163deg, rgba(236,0,140,1) 0%, rgba(252,103,103,1) 100%);
+    cursor: pointer;
+}
+
+

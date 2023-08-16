@@ -1,0 +1,22 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    gap: 10px;
+    align-items: center;
+}
+
+.content ul {
+    width: 100%;
+}
+
+.content button {
+    border-radius: 20px;
+    padding: 5px;
+    width: 90%;
+    border: 3px solid rgb(236, 236, 236);
+    background: #FFF;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+}
