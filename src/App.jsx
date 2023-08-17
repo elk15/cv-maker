@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certificates from './components/Certificates';
 import Socials from './components/Socials';
+import ResumePreview from './components/ResumePreview';
 
 
 
@@ -50,7 +51,7 @@ function App() {
       </Section>
      </main>
      <div id="preview-container">
-      preview
+      <ResumePreview/>
      </div>
     </div>
   )

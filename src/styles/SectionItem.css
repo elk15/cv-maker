@@ -4,9 +4,11 @@ li {
     padding: 15px;
     border-top: 2px solid rgb(236, 236, 236);
     cursor: pointer;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
-li .title {
+li p{
     font-weight: 500;
     color: #001250;
 }

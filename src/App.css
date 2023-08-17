@@ -12,6 +12,15 @@
   gap: 20px;
 }
 
+#preview-container {
+  border: 1px solid black;
+  width: 21cm;
+  height: 29.7cm;
+  display: grid;
+  grid-template-columns: 8cm 1fr;
+  background: linear-gradient(176deg, rgba(187,115,224,1) 0%, rgba(255,141,219,1) 100%);
+}
+
 @media screen and (max-width: 1000px) {
   #preview-container {
     display: none;
