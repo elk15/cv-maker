@@ -15,21 +15,38 @@ import ResumePreview from './components/ResumePreview';
 
 function App() {
   const [expandId, setExpandId] = useState('');
+  const [editId, setEditId] = useState('');
+
+  const hide = {
+    display: 'none'
+  }
+
+  const show = {
+    display: 'block'
+  }
+
 
   const handleExpandBtn = (e) => {
     setExpandId(e.currentTarget.dataset.id);
   }
 
+  const handleEditBtn = (e) => {
+    setEditId(e.currentTarget.dataset.id);
+  }
+
   return (
     <div className='container'>
      <main id="edit-container">
-      <Section>
+      <Section canDisplay={show}>
         <button>Clear Resume</button>
         <button>Load Example</button>
         <button>Download Resume</button>
       </Section>
       <Section>
-        <PersonalInfo></PersonalInfo>
+        <PersonalInfo 
+        editId={editId} 
+        setEditId={setEditId} 
+        handleEditBtn={handleEditBtn}/>
       </Section>
       <Section>
         <Education expandId={expandId} handleExpandBtn={handleExpandBtn}/>

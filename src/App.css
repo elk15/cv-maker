@@ -13,7 +13,7 @@
 }
 
 #preview-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 21cm;
   height: 29.7cm;
   display: grid;
@@ -25,5 +25,54 @@
   #preview-container {
     display: none;
   }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form input {
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid rgb(170, 170, 170);
+}
+
+.form label {
+  font-weight: 500;
+}
+
+.form input:focus {
+  outline: 2px solid rgba(236,0,140,1);
+}
+
+.form .buttons {
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.form button {
+  width: 100%;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.form .save-btn {
+  background: linear-gradient(163deg, rgba(236,0,140,1) 0%, rgba(252,103,103,1) 100%);
+  color: #FFF;
 }
 
