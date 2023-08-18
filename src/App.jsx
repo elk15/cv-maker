@@ -17,14 +17,9 @@ function App() {
   const [expandId, setExpandId] = useState('');
   const [editId, setEditId] = useState('');
 
-  const hide = {
-    display: 'none'
+  const handleDisplaySections = (id) => {
+    return editId === '' || editId === id ? {display: 'block'} : {display : 'none'};
   }
-
-  const show = {
-    display: 'block'
-  }
-
 
   const handleExpandBtn = (e) => {
     setExpandId(e.currentTarget.dataset.id);
@@ -37,33 +32,33 @@ function App() {
   return (
     <div className='container'>
      <main id="edit-container">
-      <Section canDisplay={show}>
+      <Section>
         <button>Clear Resume</button>
         <button>Load Example</button>
         <button>Download Resume</button>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('personal-info')}>
         <PersonalInfo 
         editId={editId} 
         setEditId={setEditId} 
         handleEditBtn={handleEditBtn}/>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('education')}>
         <Education expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('work')}>
         <Work expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('projects')}>
         <Projects expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('skills')}>
         <Skills expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('certificates')}>
         <Certificates expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
-      <Section>
+      <Section canDisplay={handleDisplaySections('socials')}>
         <Socials expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
      </main>
