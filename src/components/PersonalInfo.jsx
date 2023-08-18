@@ -2,29 +2,13 @@ import Icon from '@mdi/react';
 import { mdiSquareEditOutline } from '@mdi/js';
 import '../styles/PersonalInfo.css';
 import { useState } from 'react';
+import Buttons from './Buttons';
 
 const initialPersonalInfo = {
-  firstName : '',
-  lastName: '',
-  role: '',
-  email: '',
-  phone: '',
-  location: '',
-  website: '',
-  portfolio: '',
 }
 
 export default function PersonalInfo({editId, setEditId, handleEditBtn, person, setPerson}) {
     const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
-
-    const handleCancelBtn = () => {
-        setEditId('');
-    }
-
-    const handleSaveBtn = () => {
-        setPerson({...person, ...personalInfo});
-        setEditId('');
-    }
 
     const handleInputChange = (e) => {
         setPersonalInfo({...personalInfo, [e.target.id] : e.target.value});
@@ -66,10 +50,7 @@ export default function PersonalInfo({editId, setEditId, handleEditBtn, person, 
                     <label htmlFor="portfolio">Portfolio(optional)</label>
                     <input type="url" id='portfolio' value={personalInfo.portfolio} onChange={handleInputChange} placeholder="Enter a url"/>
                 </div>
-                <div className='buttons'>
-                    <button className='save-btn' onClick={handleSaveBtn}>Save</button> 
-                    <button className='calcel-btn' onClick={handleCancelBtn}>Cancel</button>
-                </div>
+                <Buttons setEditId={setEditId} setPerson={setPerson} person={person} temporalState={personalInfo}/>
             </div>
                 :
                 <div className="title">

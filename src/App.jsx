@@ -20,12 +20,23 @@ const initialPerson = {
   location: 'London, England',
   website: '',
   portfolio: '',
-  education : [],
-  work: [],
-  projects: [],
-  skills: [],
-  certificates: [],
-  socials: []
+  education : [
+    {degree: '', university: '', startYear: '', endYear: ''}
+  ],
+  work: [
+    {title: '', employer: '', startYear: '', endYear: ''}
+  ],
+  projects: [
+    {title: '', url: '', description: ''}
+  ],
+  skills: [
+    {title: '', items: []}
+  ],
+  certificates: [
+    {title: '', url: ''}
+  ],
+  github: '',
+  linkedin: '',
 }
 
 function App() {
