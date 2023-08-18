@@ -1,12 +1,9 @@
-export default function Buttons({setEditId, setPerson, person, temporalState}) {
+export default function Buttons({setEditId, handleSaveBtn, setState}) {
     const handleCancelBtn = () => {
         setEditId('');
+        setState({});
     }
 
-    const handleSaveBtn = () => {
-        setPerson({...person, ...temporalState});
-        setEditId('');
-    }
     return (
         <div className='buttons'>
                     <button className='save-btn' onClick={handleSaveBtn}>Save</button> 

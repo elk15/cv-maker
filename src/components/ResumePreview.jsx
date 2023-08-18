@@ -5,6 +5,22 @@ import { mdiPhoneInTalkOutline } from '@mdi/js';
 import { mdiMapMarker } from '@mdi/js';
 import { mdiLinkVariant } from '@mdi/js';
 
+function SectionItem({title, subtitle, startYear, endYear=''}) {
+    console.log(endYear);
+    return (
+        <li>
+            <div>
+                <span className='dates'>{startYear} - {endYear}</span>
+            </div>
+            <div>
+                <span>{title}</span>
+                <p>{subtitle}</p>
+            </div>
+        </li>
+    )
+
+}
+
 function ResumePreview({person}) {
     return (
         <>
@@ -41,6 +57,16 @@ function ResumePreview({person}) {
                 <div>
                     <h3>EDUCATION</h3>
                     <hr/>
+                    <ul>
+                        {person.education.map((item) => <SectionItem 
+                        key={item.degree}
+                        title={item.degree} 
+                        subtitle={item.university}
+                        startYear={item.startYear}
+                        endYear={item.endYear}
+                        description={item.description}
+                        />)}
+                    </ul>
                 </div>
                 <div>
                     <h3>WORK EXPERIENCE</h3>

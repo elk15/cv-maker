@@ -21,10 +21,9 @@ const initialPerson = {
   website: '',
   portfolio: '',
   education : [
-    {degree: '', university: '', startYear: '', endYear: ''}
   ],
   work: [
-    {title: '', employer: '', startYear: '', endYear: ''}
+    {title: '', employer: '', startYear: '', endYear: '', description: ''}
   ],
   projects: [
     {title: '', url: '', description: ''}
@@ -73,7 +72,14 @@ function App() {
         setPerson={setPerson}/>
       </Section>
       <Section canDisplay={handleDisplaySections('education')}>
-        <Education expandId={expandId} handleExpandBtn={handleExpandBtn}/>
+        <Education 
+        expandId={expandId} 
+        handleExpandBtn={handleExpandBtn}
+        editId={editId} 
+        setEditId={setEditId} 
+        handleEditBtn={handleEditBtn}
+        person={person}
+        setPerson={setPerson}/>
       </Section>
       <Section canDisplay={handleDisplaySections('work')}>
         <Work expandId={expandId} handleExpandBtn={handleExpandBtn}/>
