@@ -5,7 +5,7 @@ import { mdiPhoneInTalkOutline } from '@mdi/js';
 import { mdiMapMarker } from '@mdi/js';
 import { mdiLinkVariant } from '@mdi/js';
 
-function ResumePreview() {
+function ResumePreview({person}) {
     return (
         <>
             <div className="col-1">
@@ -13,11 +13,11 @@ function ResumePreview() {
                     <h3>PERSONAL INFO</h3>
                     <hr/>
                     <div id='preview-personal' className='preview-section'>
-                        <p id='preview-email'><Icon path={mdiEmailFastOutline} size={1} color="white"/> test@mail.com</p>
-                        <p id='preview-phone'><Icon path={mdiPhoneInTalkOutline} size={1} color="white"/> 69704093405</p>
-                        <p id='preview-location'><Icon path={mdiMapMarker} size={1} color="white"/> Chalkis, Greece</p>
-                        <a href="http://" target="_blank"><Icon path={mdiLinkVariant} size={1} color="white"/>Personal website</a>
-                        <a href="http://" target="_blank"><Icon path={mdiLinkVariant} size={1} color="white"/>Portfolio</a>
+                        {person.email !== '' && <p id='preview-email'><Icon path={mdiEmailFastOutline} size={1} color="white"/> {person.email}</p>}
+                        {person.phone !== '' && <p id='preview-phone'><Icon path={mdiPhoneInTalkOutline} size={1} color="white"/> {person.phone}</p>}
+                        {person.location !== '' && <p id='preview-location'><Icon path={mdiMapMarker} size={1} color="white"/> {person.location}</p>}
+                        {person.website !== '' && <a href={person.website} target="_blank"><Icon path={mdiLinkVariant} size={1} color="white"/>Personal website</a>}
+                        {person.portfolio !== '' && <a href={person.portfolio} target="_blank"><Icon path={mdiLinkVariant} size={1} color="white"/>Portfolio</a>}
                     </div>
                 </div>
                 <div>
@@ -35,8 +35,8 @@ function ResumePreview() {
             </div>
             <div className="col-2">
                 <div>
-                    <h1 id='preview-name'>ELINA <span>PAPADIMITRIOU</span></h1>
-                    <h2 id='preview-role'>Full Stack Developer</h2>
+                    <h1 id='preview-name'>{person.firstName.toUpperCase()}<span>{person.lastName.toUpperCase()}</span></h1>
+                    <h2 id='preview-role'>{person.role}</h2>
                 </div>
                 <div>
                     <h3>EDUCATION</h3>

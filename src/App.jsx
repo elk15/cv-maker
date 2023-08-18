@@ -11,11 +11,27 @@ import Socials from './components/Socials';
 import ResumePreview from './components/ResumePreview';
 
 
-
+const initialPerson = {
+  firstName : 'Jane',
+  lastName: 'Smith',
+  role: 'UI Designer',
+  email: 'janeSmith@mail.com',
+  phone: '6970320192',
+  location: 'London, England',
+  website: '',
+  portfolio: '',
+  education : [],
+  work: [],
+  projects: [],
+  skills: [],
+  certificates: [],
+  socials: []
+}
 
 function App() {
   const [expandId, setExpandId] = useState('');
   const [editId, setEditId] = useState('');
+  const [person, setPerson] = useState(initialPerson);
 
   const handleDisplaySections = (id) => {
     return editId === '' || editId === id ? {display: 'block'} : {display : 'none'};
@@ -41,7 +57,9 @@ function App() {
         <PersonalInfo 
         editId={editId} 
         setEditId={setEditId} 
-        handleEditBtn={handleEditBtn}/>
+        handleEditBtn={handleEditBtn}
+        person={person}
+        setPerson={setPerson}/>
       </Section>
       <Section canDisplay={handleDisplaySections('education')}>
         <Education expandId={expandId} handleExpandBtn={handleExpandBtn}/>
@@ -63,7 +81,7 @@ function App() {
       </Section>
      </main>
      <div id="preview-container">
-      <ResumePreview/>
+      <ResumePreview person={person}/>
      </div>
     </div>
   )

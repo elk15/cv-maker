@@ -1,11 +1,33 @@
 import Icon from '@mdi/react';
 import { mdiSquareEditOutline } from '@mdi/js';
 import '../styles/PersonalInfo.css';
+import { useState } from 'react';
 
+const initialPersonalInfo = {
+  firstName : '',
+  lastName: '',
+  role: '',
+  email: '',
+  phone: '',
+  location: '',
+  website: '',
+  portfolio: '',
+}
 
-export default function PersonalInfo({editId, setEditId, handleEditBtn}) {
+export default function PersonalInfo({editId, setEditId, handleEditBtn, person, setPerson}) {
+    const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
+
     const handleCancelBtn = () => {
         setEditId('');
+    }
+
+    const handleSaveBtn = () => {
+        setPerson({...person, ...personalInfo});
+        setEditId('');
+    }
+
+    const handleInputChange = (e) => {
+        setPersonalInfo({...personalInfo, [e.target.id] : e.target.value});
     }
 
     return (
@@ -13,35 +35,39 @@ export default function PersonalInfo({editId, setEditId, handleEditBtn}) {
             {editId === 'personal-info' ?
                 <div className="form">
                 <div>
-                    <label htmlFor="first-name">First name</label>
-                    <input type="text" id='first-name'/>
+                    <label htmlFor="firstName">First name</label>
+                    <input type="text" id='firstName' value={personalInfo.firstName} onChange={handleInputChange}/>
                 </div>
                 <div>
-                    <label htmlFor="last-name">Last name</label>
-                    <input type="text" id='last-name'/>
+                    <label htmlFor="lastName">Last name</label>
+                    <input type="text" id='lastName' value={personalInfo.lastName} onChange={handleInputChange}/>
+                </div>
+                <div>
+                    <label htmlFor="role">Job title</label>
+                    <input type="text" id='role' value={personalInfo.role} onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input type="email" id='email'/>
+                    <input type="email" id='email' value={personalInfo.email} onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor="phone">Phone</label>
-                    <input type="text" id='phone'/>
+                    <input type="text" id='phone' value={personalInfo.phone} onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor="location">Location</label>
-                    <input type="text" id='location'/>
+                    <input type="text" id='location' value={personalInfo.location} onChange={handleInputChange}/>
                 </div>
                 <div>
                     <label htmlFor="website">Personal website(optional)</label>
-                    <input type="url" id='website'/>
+                    <input type="url" id='website' value={personalInfo.website} onChange={handleInputChange} placeholder="Enter a url"/>
                 </div>
                 <div>
                     <label htmlFor="portfolio">Portfolio(optional)</label>
-                    <input type="url" id='portfolio'/>
+                    <input type="url" id='portfolio' value={personalInfo.portfolio} onChange={handleInputChange} placeholder="Enter a url"/>
                 </div>
                 <div className='buttons'>
-                    <button className='save-btn'>Save</button> 
+                    <button className='save-btn' onClick={handleSaveBtn}>Save</button> 
                     <button className='calcel-btn' onClick={handleCancelBtn}>Cancel</button>
                 </div>
             </div>
