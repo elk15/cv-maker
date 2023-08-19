@@ -5,22 +5,35 @@ import SectionContent from "./SectionContent";
 import SectionItem from "./SectionItem";
 import { useState } from 'react';
 import Buttons from './Buttons';
+import { v4 as uuidv4 } from 'uuid';
+
+const initialEducation = {
+    id: '',
+    degree: '',
+    university: '',
+    startYear: '',
+    endYear: '',
+}
 
 
 export default function Education({expandId, handleExpandBtn, editId, setEditId, handleEditBtn, person, setPerson}) {
-    const [education, setEducation] = useState({});
+    const [education, setEducation] = useState(initialEducation);
 
     const handleInputChange = (e) => {
         setEducation({...education, [e.target.id] : e.target.value});
     }
 
     const handleSaveBtn = () => {
-        setPerson({...person, education: [...person.education, education]});
-        setEditId('');
-        setEducation({});
+        const isFilled = education.degree !== '' && education.university !== '' && education.startYear !== '';
+        if (isFilled) {
+            education.id = uuidv4();
+            setPerson({...person, education: [...person.education, education]});
+            setEditId('');
+            setEducation(initialEducation);
+        }
     }
 
-    const sectionItems = person.education.map(item=> <SectionItem key={item.degree} title={item.degree} subtitle={item.university}/>);
+    const sectionItems = person.education.map(item=> <SectionItem key={item.id} title={item.degree} subtitle={item.university}/>);
 
     return (
         <div id="education">
@@ -43,7 +56,7 @@ export default function Education({expandId, handleExpandBtn, editId, setEditId,
                         <label htmlFor="endYear">End Year(optional)</label>
                         <input type="text" id='endYear' onChange={handleInputChange}/>
                     </div>
-                    <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setEducation}/>
+                    <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setEducation} initialState={initialEducation}/>
                 </div> 
             :
                 <>

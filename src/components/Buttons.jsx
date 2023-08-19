@@ -1,7 +1,7 @@
-export default function Buttons({setEditId, handleSaveBtn, setState}) {
+export default function Buttons({setEditId, handleSaveBtn, setState, initialState}) {
     const handleCancelBtn = () => {
         setEditId('');
-        setState({});
+        setState(initialState);
     }
 
     return (

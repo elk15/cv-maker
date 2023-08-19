@@ -4,22 +4,34 @@ import SectionContent from "./SectionContent";
 import SectionItem from "./SectionItem";
 import { useState } from 'react';
 import Buttons from './Buttons';
+import { v4 as uuidv4 } from 'uuid';
 
+const initialWork = {
+    id: '',
+    title: '',
+    employer: '',
+    startYear: '',
+    endYear: ''
+}
 
 export default function Work({expandId, handleExpandBtn, editId, setEditId, handleEditBtn, person, setPerson}) {
-    const [work, setWork] = useState({});
+    const [work, setWork] = useState(initialWork);
 
     const handleInputChange = (e) => {
         setWork({...work, [e.target.id] : e.target.value});
     }
 
     const handleSaveBtn = () => {
-        setPerson({...person, work: [...person.work, work]});
-        setEditId('');
-        setWork({});
+        const isFilled = work.title !== '' && work.employer !== '' && work.startYear !== '';
+        if (isFilled) {
+            work.id = uuidv4();
+            setPerson({...person, work: [...person.work, work]});
+            setEditId('');
+            setWork(initialWork);
+        }
     }
 
-    const sectionItems = person.education.map(item=> <SectionItem key={item.title} title={item.title} subtitle={item.employer}/>);
+    const sectionItems = person.work.map(item=> <SectionItem key={item.id} title={item.title} subtitle={item.employer}/>);
 
 
     return (
@@ -42,7 +54,7 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
                         <label htmlFor="endYear">End Year(optional)</label>
                         <input type="text" id='endYear' onChange={handleInputChange}/>
                     </div>
-                    <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setWork}/>
+                    <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setWork} initialState={initialWork}/>
                 </div> 
             :
                 <>
