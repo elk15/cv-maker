@@ -1,5 +1,4 @@
 import { mdiSchool } from '@mdi/js';
-import '../styles/Education.css';
 import SectionTitle from './SectionTitle';
 import SectionContent from "./SectionContent";
 import SectionItem from "./SectionItem";

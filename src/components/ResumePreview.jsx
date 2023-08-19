@@ -20,6 +20,20 @@ function SectionItem({title, subtitle, startYear, endYear=''}) {
 
 }
 
+function SectionItemWithLink({title, url, description = ''}) {
+    return (
+        <li>
+            <div>
+                <span><a href={url} target="_blank">
+                    <Icon path={mdiLinkVariant} size={1}/>
+                    {title}
+                    </a></span>
+                <p>{description}</p>
+            </div>
+        </li>
+    )
+}
+
 function ResumePreview({person}) {
     return (
         <>
@@ -53,42 +67,49 @@ function ResumePreview({person}) {
                     <h1 id='preview-name'>{person.firstName.toUpperCase()}<span>{person.lastName.toUpperCase()}</span></h1>
                     <h2 id='preview-role'>{person.role}</h2>
                 </div>
+                {person.education.length > 0 &&
                 <div>
-                    {person.education.length > 0 &&
-                        <>
-                        <h3>EDUCATION</h3>
-                        <hr/>
-                        <ul>
-                            {person.education.map((item) => <SectionItem 
+                    <h3>EDUCATION</h3>
+                    <hr/>
+                    <ul>
+                        {person.education.map((item) => <SectionItem 
                             key={item.id}
                             title={item.degree} 
                             subtitle={item.university}
                             startYear={item.startYear}
                             endYear={item.endYear}/>)}
-                        </ul>
-                        </>
-                    }
+                    </ul>
                 </div>
+                }
+                {person.work.length > 0 &&
                 <div>
-                    {person.work.length > 0 &&
-                        <>
-                        <h3>WORK EXPERIENCE</h3>
-                        <hr/>
-                        <ul>
-                            {person.work.map((item) => <SectionItem
+                    <h3>WORK EXPERIENCE</h3>
+                    <hr/>
+                    <ul>
+                        {person.work.map((item) => <SectionItem
                             key={item.id}
                             title={item.title}
                             subtitle={item.employer}
                             startYear={item.startYear}
                             endYear={item.endYear}/>)}
-                        </ul>
-                        </>
-                    }
+                    </ul>
                 </div>
+                }
+                {person.projects.length > 0 &&
                 <div>
                     <h3>PROJECTS</h3>
                     <hr/>
+                    <ul>
+                        {person.projects.map((item) => <SectionItemWithLink
+                            key={item.id}
+                            title={item.title}
+                            url={item.url}
+                            description={item.description}
+                            />)}
+                    </ul>
                 </div>
+                }
+                
             </div>
         </>
     )

@@ -25,7 +25,6 @@ const initialPerson = {
   work: [
   ],
   projects: [
-    {title: '', url: '', description: ''}
   ],
   skills: [
     {title: '', items: []}
@@ -91,7 +90,14 @@ function App() {
         setPerson={setPerson}/>
       </Section>
       <Section canDisplay={handleDisplaySections('projects')}>
-        <Projects expandId={expandId} handleExpandBtn={handleExpandBtn}/>
+        <Projects 
+        expandId={expandId} 
+        handleExpandBtn={handleExpandBtn}
+        editId={editId} 
+        setEditId={setEditId} 
+        handleEditBtn={handleEditBtn}
+        person={person}
+        setPerson={setPerson}/>
       </Section>
       <Section canDisplay={handleDisplaySections('skills')}>
         <Skills expandId={expandId} handleExpandBtn={handleExpandBtn}/>

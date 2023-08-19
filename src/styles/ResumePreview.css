@@ -104,6 +104,12 @@
     font-weight: 500;
 }
 
+#preview-container ul li span a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 #preview-container ul li .dates {
     width: 110px;
 }

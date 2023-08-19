@@ -12,7 +12,7 @@ export default function SectionItem({title, subtitle = '', id, handleDeleteItemB
     return (
         <li>
             <span onClick={handleEditBtn}>
-                <p>{title},</p> {subtitle}
+                <p>{subtitle === '' ? title : title + ','}</p> {subtitle}
             </span>
             <button onClick={handleDeleteBtn}>X</button>
         </li>
