@@ -7,8 +7,18 @@ import Work from './components/Work';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certificates from './components/Certificates';
-import Socials from './components/Socials';
+import Links from './components/Links';
 import ResumePreview from './components/ResumePreview';
+import { v4 as uuidv4 } from 'uuid';
+
+const education1 = uuidv4();
+const education2 = uuidv4();
+const work1 = uuidv4();
+const work2 = uuidv4();
+const work3 = uuidv4();
+const skills1 = uuidv4();
+const skills2 = uuidv4();
+const skills3 = uuidv4();
 
 
 const initialPerson = {
@@ -118,8 +128,15 @@ function App() {
         person={person}
         setPerson={setPerson}/>
       </Section>
-      <Section canDisplay={handleDisplaySections('socials')}>
-        <Socials expandId={expandId} handleExpandBtn={handleExpandBtn}/>
+      <Section canDisplay={handleDisplaySections('links')}>
+        <Links 
+        expandId={expandId} 
+        handleExpandBtn={handleExpandBtn}
+        editId={editId} 
+        setEditId={setEditId} 
+        handleEditBtn={handleEditBtn}
+        person={person}
+        setPerson={setPerson}/>
       </Section>
      </main>
      <div id="preview-container">

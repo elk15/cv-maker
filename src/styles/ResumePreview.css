@@ -145,3 +145,12 @@
     font-size: 1.1rem;
 }
 
+#social-media-icons svg{
+    width: 60px;
+}
+
+#social-media-icons {
+    display: flex;
+    gap: 10px;
+}
+
