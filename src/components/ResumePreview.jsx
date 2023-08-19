@@ -54,22 +54,36 @@ function ResumePreview({person}) {
                     <h2 id='preview-role'>{person.role}</h2>
                 </div>
                 <div>
-                    <h3>EDUCATION</h3>
-                    <hr/>
-                    <ul>
-                        {person.education.map((item) => <SectionItem 
-                        key={item.degree}
-                        title={item.degree} 
-                        subtitle={item.university}
-                        startYear={item.startYear}
-                        endYear={item.endYear}
-                        description={item.description}
-                        />)}
-                    </ul>
+                    {person.education.length > 0 &&
+                        <>
+                        <h3>EDUCATION</h3>
+                        <hr/>
+                        <ul>
+                            {person.education.map((item) => <SectionItem 
+                            key={item.id}
+                            title={item.degree} 
+                            subtitle={item.university}
+                            startYear={item.startYear}
+                            endYear={item.endYear}/>)}
+                        </ul>
+                        </>
+                    }
                 </div>
                 <div>
-                    <h3>WORK EXPERIENCE</h3>
-                    <hr/>
+                    {person.work.length > 0 &&
+                        <>
+                        <h3>WORK EXPERIENCE</h3>
+                        <hr/>
+                        <ul>
+                            {person.work.map((item) => <SectionItem
+                            key={item.id}
+                            title={item.title}
+                            subtitle={item.employer}
+                            startYear={item.startYear}
+                            endYear={item.endYear}/>)}
+                        </ul>
+                        </>
+                    }
                 </div>
                 <div>
                     <h3>PROJECTS</h3>
