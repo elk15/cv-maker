@@ -69,7 +69,7 @@ export default function Projects({expandId, handleExpandBtn, editId, setEditId, 
                     <div>
                         <label htmlFor="project-description">Description</label>
                         <textarea name="project-description" id="project-description" cols="30" rows="10"
-                        value={project.description} onChange={handleInputChange} maxLength="100"></textarea>
+                        value={project.description} onChange={handleInputChange} maxLength="120"></textarea>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setProject} initialState={initialProject}/>
                 </div> 

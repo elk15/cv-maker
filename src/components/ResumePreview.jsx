@@ -34,6 +34,26 @@ function SectionItemWithLink({title, url, description = '', color}) {
     )
 }
 
+function SkillItem({item}) {
+    return (
+        <div className='skill-label'>
+            {item}
+        </div>
+    )
+}
+
+function SkillSet({title, items}) {
+
+    return (
+        <li>
+            <span>{title}</span>
+            <div className="skill-labels">
+                {items.map((item) => <SkillItem key={item} item={item}/>)}
+            </div>
+        </li>
+    )
+}
+
 function ResumePreview({person}) {
     return (
         <>
@@ -49,10 +69,18 @@ function ResumePreview({person}) {
                         {person.portfolio !== '' && <a href={person.portfolio} target="_blank"><Icon path={mdiLinkVariant} size={1} color="white"/>Portfolio</a>}
                     </div>
                 </div>
+                {person.skills.length > 0 &&
                 <div>
                     <h3>SKILLS</h3>
                     <hr/>
+                    <ul>
+                        {person.skills.map((item) => <SkillSet 
+                        key={item.id} 
+                        title={item.title} 
+                        items={item.items}/>)}
+                    </ul>
                 </div>
+                }
                 {person.certificates.length > 0 && 
                     <div>
                         <h3>CERTIFICATES</h3>
