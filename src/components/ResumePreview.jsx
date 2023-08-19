@@ -20,12 +20,12 @@ function SectionItem({title, subtitle, startYear, endYear=''}) {
 
 }
 
-function SectionItemWithLink({title, url, description = ''}) {
+function SectionItemWithLink({title, url, description = '', color}) {
     return (
         <li>
             <div>
                 <span><a href={url} target="_blank">
-                    <Icon path={mdiLinkVariant} size={1}/>
+                    <Icon path={mdiLinkVariant} size={1} color={color}/>
                     {title}
                     </a></span>
                 <p>{description}</p>
@@ -53,10 +53,20 @@ function ResumePreview({person}) {
                     <h3>SKILLS</h3>
                     <hr/>
                 </div>
-                <div>
-                    <h3>CERTIFICATES</h3>
-                    <hr/>
-                </div>
+                {person.certificates.length > 0 && 
+                    <div>
+                        <h3>CERTIFICATES</h3>
+                        <hr/>
+                        <ul>
+                        {person.certificates.map((item) => <SectionItemWithLink
+                            key={item.id}
+                            title={item.title}
+                            url={item.url}
+                            color={'white'}
+                            />)}
+                        </ul>
+                    </div>
+                }
                 <div>
                     <h3>SOCIALS</h3>
                     <hr/>
@@ -105,6 +115,7 @@ function ResumePreview({person}) {
                             title={item.title}
                             url={item.url}
                             description={item.description}
+                            color={'black'}
                             />)}
                     </ul>
                 </div>

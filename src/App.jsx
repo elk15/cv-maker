@@ -30,7 +30,6 @@ const initialPerson = {
     {title: '', items: []}
   ],
   certificates: [
-    {title: '', url: ''}
   ],
   github: '',
   linkedin: '',
@@ -103,7 +102,14 @@ function App() {
         <Skills expandId={expandId} handleExpandBtn={handleExpandBtn}/>
       </Section>
       <Section canDisplay={handleDisplaySections('certificates')}>
-        <Certificates expandId={expandId} handleExpandBtn={handleExpandBtn}/>
+        <Certificates 
+        expandId={expandId} 
+        handleExpandBtn={handleExpandBtn}
+        editId={editId} 
+        setEditId={setEditId} 
+        handleEditBtn={handleEditBtn}
+        person={person}
+        setPerson={setPerson}/>
       </Section>
       <Section canDisplay={handleDisplaySections('socials')}>
         <Socials expandId={expandId} handleExpandBtn={handleExpandBtn}/>
