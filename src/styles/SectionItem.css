@@ -3,11 +3,24 @@
     padding: 15px;
     border-top: 2px solid rgb(236, 236, 236);
     cursor: pointer;
-    flex-wrap: wrap;
     gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#edit-container li span {
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
 #edit-container li p{
     font-weight: 500;
     color: #001250;
+}
+
+.section li button {
+    width: 30px;
+    border: none;
+    cursor: pointer;
 }

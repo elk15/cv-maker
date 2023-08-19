@@ -33,7 +33,16 @@ export default function Education({expandId, handleExpandBtn, editId, setEditId,
         }
     }
 
-    const sectionItems = person.education.map(item=> <SectionItem key={item.id} title={item.degree} subtitle={item.university}/>);
+    const handleDeleteItemBtn = (id) => {
+        const newEducation = person.education.filter((item) => item.id !== id);
+        setPerson({...person, education : newEducation})
+    }
+
+    const sectionItems = person.education.map(item=> <SectionItem key={item.id} 
+        title={item.degree} 
+        subtitle={item.university} 
+        id={item.id} 
+        handleDeleteItemBtn={handleDeleteItemBtn}/>);
 
     return (
         <div id="education">

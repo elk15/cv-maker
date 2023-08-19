@@ -6,7 +6,6 @@ import { mdiMapMarker } from '@mdi/js';
 import { mdiLinkVariant } from '@mdi/js';
 
 function SectionItem({title, subtitle, startYear, endYear=''}) {
-    console.log(endYear);
     return (
         <li>
             <div>

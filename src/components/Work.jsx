@@ -31,7 +31,16 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
         }
     }
 
-    const sectionItems = person.work.map(item=> <SectionItem key={item.id} title={item.title} subtitle={item.employer}/>);
+    const handleDeleteItemBtn = (id) => {
+        const newWork = person.work.filter((item) => item.id !== id);
+        setPerson({...person, work : newWork})
+    }
+
+    const sectionItems = person.work.map(item=> <SectionItem key={item.id} 
+        title={item.title} 
+        subtitle={item.employer}
+        id={item.id} 
+        handleDeleteItemBtn={handleDeleteItemBtn}/>);
 
 
     return (

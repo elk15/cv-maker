@@ -1,7 +1,16 @@
 import '../styles/SectionItem.css';
 
-export default function SectionItem({title, subtitle = ''}) {
+export default function SectionItem({title, subtitle = '', id, handleDeleteItemBtn}) {
+    const handleDeleteBtn = () => {
+        handleDeleteItemBtn(id);
+    }
+
     return (
-        <li><p>{title},</p> {subtitle}</li>
+        <li>
+            <span>
+                <p>{title},</p> {subtitle}
+            </span>
+            <button onClick={handleDeleteBtn}>X</button>
+        </li>
     )
 }
