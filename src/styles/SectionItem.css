@@ -2,7 +2,6 @@
     display: flex;
     padding: 15px;
     border-top: 2px solid rgb(236, 236, 236);
-    cursor: pointer;
     gap: 5px;
     justify-content: space-between;
     align-items: center;
@@ -11,6 +10,7 @@
 #edit-container li span {
     display: flex;
     flex-wrap: wrap;
+    cursor: pointer;
 
 }
 

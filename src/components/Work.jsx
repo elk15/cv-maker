@@ -24,8 +24,14 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
     const handleSaveBtn = () => {
         const isFilled = work.title !== '' && work.employer !== '' && work.startYear !== '';
         if (isFilled) {
-            work.id = uuidv4();
-            setPerson({...person, work: [...person.work, work]});
+            if(work.id === '') {
+                work.id = uuidv4();
+                setPerson({...person, work: [...person.work, work]});
+            } else {
+                let newWork = person.work.filter((item) => item.id !== work.id);
+                newWork = [...newWork, work];
+                setPerson({...person, work : newWork});
+            }
             setEditId('');
             setWork(initialWork);
         }
@@ -36,11 +42,18 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
         setPerson({...person, work : newWork})
     }
 
+    const handleEditItemBtn = (id) => {
+        const item = person.work.find((item) => item.id === id);
+        setWork(item);
+        setEditId('work');
+    }
+
     const sectionItems = person.work.map(item=> <SectionItem key={item.id} 
         title={item.title} 
         subtitle={item.employer}
         id={item.id} 
-        handleDeleteItemBtn={handleDeleteItemBtn}/>);
+        handleDeleteItemBtn={handleDeleteItemBtn}
+        handleEditItemBtn={handleEditItemBtn}/>);
 
 
     return (
@@ -49,19 +62,19 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
                 <div className="form">
                     <div>
                         <label htmlFor="title">Job title</label>
-                        <input type="text" id='title' onChange={handleInputChange}/>
+                        <input type="text" id='title' value={work.title} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor="employer">Employer</label>
-                        <input type="text" id='employer' onChange={handleInputChange}/>
+                        <input type="text" id='employer' value={work.employer} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor="startYear">Start Year</label>
-                        <input type="text" id='startYear' onChange={handleInputChange}/>
+                        <input type="text" id='startYear' value={work.startYear} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor="endYear">End Year(optional)</label>
-                        <input type="text" id='endYear' onChange={handleInputChange}/>
+                        <input type="text" id='endYear' value={work.endYear} onChange={handleInputChange}/>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setWork} initialState={initialWork}/>
                 </div> 
