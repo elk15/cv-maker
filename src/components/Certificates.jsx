@@ -16,8 +16,7 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
     const [certificate, setCertificate] = useState(initialCertificate);
 
     const handleInputChange = (e) => {
-        const key = e.target.id.split('-')[1];
-        setCertificate({...certificate, [key] : e.target.value});
+        setCertificate({...certificate, [e.target.id] : e.target.value});
     }
 
     const handleSaveBtn = () => {
@@ -58,12 +57,12 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
             {editId === 'certificates' ?
                 <div className="form">
                     <div>
-                        <label htmlFor="certificate-title">Title</label>
-                        <input type="text" id='certificate-title' value={certificate.title} onChange={handleInputChange}/>
+                        <label htmlFor="title">Title</label>
+                        <input type="text" id='title' value={certificate.title} onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label htmlFor="certificate-url">Enter link</label>
-                        <input type="url" id='certificate-url' value={certificate.url} onChange={handleInputChange}/>
+                        <label htmlFor="url">Enter link</label>
+                        <input type="url" id='url' value={certificate.url} onChange={handleInputChange}/>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setCertificate} initialState={initialCertificate}/>
                 </div> 

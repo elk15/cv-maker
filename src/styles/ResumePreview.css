@@ -99,6 +99,10 @@
     flex-direction: column;
 }
 
+#preview-container ul li div p+p {
+    color: rgb(148, 148, 148);
+}
+
 #preview-container ul li span{
     font-size: 1.2rem;
     font-weight: 500;
@@ -146,7 +150,7 @@
 }
 
 #social-media-icons svg{
-    width: 60px;
+    width: 40px;
 }
 
 #social-media-icons {

@@ -13,8 +13,7 @@ export default function Links({expandId, handleExpandBtn, editId, setEditId, han
     const [links, setLinks] = useState(initialLinks);
 
     const handleInputChange = (e) => {
-        const key = e.target.id.split('-')[1];
-        setLinks({...links, [key] : e.target.value});
+        setLinks({...links, [e.target.id] : e.target.value});
     }
 
     const handleSaveBtn = () => {
@@ -27,12 +26,12 @@ export default function Links({expandId, handleExpandBtn, editId, setEditId, han
             {editId === 'links' ?
                 <div className="form">
                     <div>
-                        <label htmlFor="links-github">Github link</label>
-                        <input type="url" id='links-github' value={links.github} onChange={handleInputChange}/>
+                        <label htmlFor="github">Github link</label>
+                        <input type="url" id='github' value={links.github} onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label htmlFor="links-linkedin">LinkedIn link</label>
-                        <input type="url" id='links-linkedin' value={links.linkedin} onChange={handleInputChange}/>
+                        <label htmlFor="linkedin">LinkedIn link</label>
+                        <input type="url" id='linkedin' value={links.linkedin} onChange={handleInputChange}/>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setLinks} initialState={links}/>
                 </div> 

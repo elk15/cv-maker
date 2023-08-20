@@ -10,6 +10,7 @@ const initialWork = {
     id: '',
     title: '',
     employer: '',
+    description: '',
     startYear: '',
     endYear: ''
 }
@@ -67,6 +68,11 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
                     <div>
                         <label htmlFor="employer">Employer</label>
                         <input type="text" id='employer' value={work.employer} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="description">Short description (optional)</label>
+                        <textarea name="description" id="description" cols="30" rows="10" maxLength="120"
+                        value={work.description} onChange={handleInputChange} placeholder="Max characters: 120"></textarea>
                     </div>
                     <div>
                         <label htmlFor="startYear">Start Year</label>

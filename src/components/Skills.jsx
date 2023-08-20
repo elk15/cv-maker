@@ -16,8 +16,7 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
     const [skill, setSkill] = useState(initialSkill);
 
     const handleInputChange = (e) => {
-        const key = e.target.id.split('-')[1];
-        setSkill({...skill, [key] : e.target.value});
+        setSkill({...skill, [e.target.id] : e.target.value});
     }
 
     const handleSkillsInputChange = (e) => {
@@ -63,12 +62,12 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
             {editId === 'skills' ?
                 <div className="form">
                     <div>
-                        <label htmlFor="skill-title">Title of skill set</label>
-                        <input type="text" id='skill-title' value={skill.title} onChange={handleInputChange}/>
+                        <label htmlFor="title">Title of skill set</label>
+                        <input type="text" id='title' value={skill.title} onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label htmlFor="skill-items">Enter skills</label>
-                        <textarea name="skill-items" id="skill-items" cols="30" rows="10"
+                        <label htmlFor="items">Enter skills</label>
+                        <textarea name="items" id="items" cols="30" rows="10"
                         value={skill.items.join(',')} onChange={handleSkillsInputChange} maxLength="120"
                         placeholder="Skills must be separated by coma. For example: html,css,javasript"></textarea>
                     </div>

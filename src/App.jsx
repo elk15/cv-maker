@@ -24,24 +24,79 @@ const skills3 = uuidv4();
 const initialPerson = {
   firstName : 'Jane',
   lastName: 'Smith',
-  role: 'UI Designer',
+  role: 'Software Engineer',
   email: 'janeSmith@mail.com',
   phone: '6970320192',
   location: 'London, England',
-  website: '',
+  website: 'https://www.google.com/',
   portfolio: '',
   education : [
+    {
+      id: education1,
+      degree: 'BSc Computer Science',
+      university: 'University of London',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      startYear: '2010',
+      endYear: '2014',
+    },
+    {
+      id: education2,
+      degree: 'MSc Software Engineering',
+      university: 'University of London',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      startYear: '2014',
+      endYear: '2016',
+    }
   ],
   work: [
+    {
+      id: work1,
+      title: 'Junior Web Developer',
+      employer: 'A Company',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      startYear: '2014',
+      endYear: '2017'
+    },
+    {
+      id: work2,
+      title: 'Java Developer',
+      employer: 'Another Company',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      startYear: '2017',
+      endYear: '2021'
+    },
+    {
+      id: work3,
+      title: 'Senior Software Engineer',
+      employer: 'Another Company',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      startYear: '2021',
+      endYear: ''
+    }
   ],
   projects: [
   ],
   skills: [
+    {
+      id: skills1,
+      title: 'Front End',
+      items: ['HTML', 'CSS', 'Javascript', 'React', 'Angular', 'Vue', 'Jest']
+    },
+    {
+      id: skills2,
+      title: 'Back End',
+      items: ['Java', 'Python', 'C++', 'C#', 'SQL', 'MongoDB']
+    },
+    {
+      id: skills3,
+      title: 'Other',
+      items: ['Figma', 'Git', 'React Native']
+    }
   ],
   certificates: [
   ],
-  github: '',
-  linkedin: '',
+  github: 'https://github.com/li',
+  linkedin: 'https://www.linkedin.com/',
 }
 
 function App() {

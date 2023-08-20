@@ -10,6 +10,7 @@ const initialEducation = {
     id: '',
     degree: '',
     university: '',
+    description: '',
     startYear: '',
     endYear: '',
 }
@@ -68,6 +69,11 @@ export default function Education({expandId, handleExpandBtn, editId, setEditId,
                     <div>
                         <label htmlFor="university">University</label>
                         <input type="text" id='university' value={education.university} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="description">Short description (optional)</label>
+                        <textarea name="description" id="description" cols="30" rows="10" maxLength="120"
+                        value={education.description} onChange={handleInputChange} placeholder="Max characters: 120"></textarea>
                     </div>
                     <div>
                         <label htmlFor="startYear">Start Year</label>

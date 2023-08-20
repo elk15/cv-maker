@@ -17,8 +17,7 @@ export default function Projects({expandId, handleExpandBtn, editId, setEditId, 
     const [project, setProject] = useState(initialProject);
 
     const handleInputChange = (e) => {
-        const key = e.target.id.split('-')[1];
-        setProject({...project, [key] : e.target.value});
+        setProject({...project, [e.target.id] : e.target.value});
     }
 
     const handleSaveBtn = () => {
@@ -59,16 +58,16 @@ export default function Projects({expandId, handleExpandBtn, editId, setEditId, 
             {editId === 'projects' ?
                 <div className="form">
                     <div>
-                        <label htmlFor="project-title">Title</label>
-                        <input type="text" id='project-title' value={project.title} onChange={handleInputChange}/>
+                        <label htmlFor="title">Title</label>
+                        <input type="text" id='title' value={project.title} onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label htmlFor="project-url">Enter link</label>
-                        <input type="url" id='project-url' value={project.url} onChange={handleInputChange}/>
+                        <label htmlFor="url">Enter link</label>
+                        <input type="url" id='url' value={project.url} onChange={handleInputChange}/>
                     </div>
                     <div>
-                        <label htmlFor="project-description">Description</label>
-                        <textarea name="project-description" id="project-description" cols="30" rows="10"
+                        <label htmlFor="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="10"
                         value={project.description} onChange={handleInputChange} maxLength="120"></textarea>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setProject} initialState={initialProject}/>
