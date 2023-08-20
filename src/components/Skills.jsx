@@ -20,8 +20,7 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
     }
 
     const handleSkillsInputChange = (e) => {
-        const key = e.target.id.split('-')[1];
-        setSkill({...skill, [key] : e.target.value.split(',')});
+        setSkill({...skill, [e.target.id] : e.target.value.split(',')});
     }
 
     const handleSaveBtn = () => {
@@ -37,6 +36,7 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
                     }
                     return item;
                 });
+                console.log(editedSkills);
                 setPerson({...person, skills : editedSkills});
             }
             setEditId('');
@@ -60,6 +60,7 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
         id={item.id} 
         handleDeleteItemBtn={handleDeleteItemBtn}
         handleEditItemBtn={handleEditItemBtn}/>);
+    
 
     return (
         <div className="skills">
@@ -71,9 +72,12 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
                     </div>
                     <div>
                         <label htmlFor="items">Enter skills</label>
-                        <textarea name="items" id="items" cols="30" rows="10"
-                        value={skill.items.join(',')} onChange={handleSkillsInputChange} maxLength="120"
-                        placeholder="Skills must be separated by coma. For example: html,css,javasript"></textarea>
+                        <textarea name="items" id="items" cols="30" rows="5"
+                        value={skill.items}
+                        onChange={handleSkillsInputChange} 
+                        maxLength="120"
+                        placeholder="Skills must be separated by coma. For example: html,css,javasript">
+                        </textarea>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setSkill} initialState={initialSkill}/>
                 </div> 
