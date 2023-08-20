@@ -133,7 +133,11 @@ function App() {
   }
 
   const handleExpandBtn = (e) => {
-    setExpandId(e.currentTarget.dataset.id);
+    if (expandId === e.currentTarget.dataset.id) {
+      setExpandId('');
+    } else {
+      setExpandId(e.currentTarget.dataset.id);
+    }
   }
 
   const handleEditBtn = (e) => {
