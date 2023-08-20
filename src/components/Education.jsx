@@ -15,6 +15,8 @@ const initialEducation = {
     endYear: '',
 }
 
+const yearRegex = /^(19\d{2}|20\d{2}|2100)$/;
+
 
 export default function Education({expandId, handleExpandBtn, editId, setEditId, handleEditBtn, person, setPerson}) {
     const [education, setEducation] = useState(initialEducation);
@@ -24,8 +26,9 @@ export default function Education({expandId, handleExpandBtn, editId, setEditId,
     }
 
     const handleSaveBtn = () => {
-        const isFilled = education.degree !== '' && education.university !== '' && education.startYear !== '';
-        if (isFilled) {
+        const isFilled = education.degree !== '' && education.university !== '';
+        const areYearsValid = (education.endYear === '' || yearRegex.test(education.endYear)) && yearRegex.test(education.startYear)
+        if (isFilled && areYearsValid) {
             if(education.id === '') {
                 education.id = uuidv4();
                 setPerson({...person, education: [...person.education, education]});
@@ -81,11 +84,13 @@ export default function Education({expandId, handleExpandBtn, editId, setEditId,
                     </div>
                     <div>
                         <label htmlFor="startYear">Start Year</label>
-                        <input type="text" id='startYear' value={education.startYear} onChange={handleInputChange}/>
+                        <input type="text" id='startYear' placeholder='Enter a 4 digit number between 1900-2100'
+                        value={education.startYear} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor="endYear">End Year(optional)</label>
-                        <input type="text" id='endYear' value={education.endYear} onChange={handleInputChange}/>
+                        <input type="text" id='endYear' placeholder='Enter a 4 digit number between 1900-2100'
+                        value={education.endYear} onChange={handleInputChange}/>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setEducation} initialState={initialEducation}/>
                 </div> 

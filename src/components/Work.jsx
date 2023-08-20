@@ -15,6 +15,8 @@ const initialWork = {
     endYear: ''
 }
 
+const yearRegex = /^(19\d{2}|20\d{2}|2100)$/;
+
 export default function Work({expandId, handleExpandBtn, editId, setEditId, handleEditBtn, person, setPerson}) {
     const [work, setWork] = useState(initialWork);
 
@@ -23,8 +25,9 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
     }
 
     const handleSaveBtn = () => {
-        const isFilled = work.title !== '' && work.employer !== '' && work.startYear !== '';
-        if (isFilled) {
+        const isFilled = work.title !== '' && work.employer !== '';
+        const areYearsValid = (work.endYear === '' || yearRegex.test(work.endYear)) && yearRegex.test(work.startYear)
+        if (isFilled && areYearsValid) {
             if(work.id === '') {
                 work.id = uuidv4();
                 setPerson({...person, work: [...person.work, work]});
@@ -80,11 +83,13 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
                     </div>
                     <div>
                         <label htmlFor="startYear">Start Year</label>
-                        <input type="text" id='startYear' value={work.startYear} onChange={handleInputChange}/>
+                        <input type="text" id='startYear' placeholder='Enter a 4 digit number between 1900-2100'
+                        value={work.startYear} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor="endYear">End Year(optional)</label>
-                        <input type="text" id='endYear' value={work.endYear} onChange={handleInputChange}/>
+                        <input type="text" id='endYear' placeholder='Enter a 4 digit number between 1900-2100'
+                        value={work.endYear} onChange={handleInputChange}/>
                     </div>
                     <Buttons setEditId={setEditId} handleSaveBtn={handleSaveBtn} setState={setWork} initialState={initialWork}/>
                 </div> 
