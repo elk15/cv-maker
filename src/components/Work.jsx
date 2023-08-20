@@ -29,9 +29,13 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
                 work.id = uuidv4();
                 setPerson({...person, work: [...person.work, work]});
             } else {
-                let newWork = person.work.filter((item) => item.id !== work.id);
-                newWork = [...newWork, work];
-                setPerson({...person, work : newWork});
+                const editedWork = person.work.map((item) => {
+                    if (item.id === work.id) {
+                        item = {...work};
+                    }
+                    return item;
+                });
+                setPerson({...person, work : editedWork});
             }
             setEditId('');
             setWork(initialWork);
@@ -49,7 +53,7 @@ export default function Work({expandId, handleExpandBtn, editId, setEditId, hand
         setEditId('work');
     }
 
-    const sectionItems = person.work.map(item=> <SectionItem key={item.id} 
+    const sectionItems = person.work.map(item => <SectionItem key={item.id} 
         title={item.title} 
         subtitle={item.employer}
         id={item.id} 

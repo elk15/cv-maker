@@ -12,7 +12,7 @@ const initialCertificate = {
     url: ''
 }
 
-export default function Skills({expandId, handleExpandBtn, editId, setEditId, handleEditBtn, person, setPerson}) {
+export default function Certificates({expandId, handleExpandBtn, editId, setEditId, handleEditBtn, person, setPerson}) {
     const [certificate, setCertificate] = useState(initialCertificate);
 
     const handleInputChange = (e) => {
@@ -26,9 +26,13 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
                 certificate.id = uuidv4();
                 setPerson({...person, certificates: [...person.certificates, certificate]});
             } else {
-                let newCertificates = person.certificates.filter((item) => item.id !== certificate.id);
-                newCertificates = [...newCertificates, certificate];
-                setPerson({...person, certificates : newCertificates});
+                const editedCertificates = person.certificates.map((item) => {
+                    if (item.id === certificate.id) {
+                        item = {...certificate};
+                    }
+                    return item;
+                });
+                setPerson({...person, certificates : editedCertificates});
             }
             setEditId('');
             setCertificate(initialCertificate);

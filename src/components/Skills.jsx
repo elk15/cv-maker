@@ -31,9 +31,13 @@ export default function Skills({expandId, handleExpandBtn, editId, setEditId, ha
                 skill.id = uuidv4();
                 setPerson({...person, skills: [...person.skills, skill]});
             } else {
-                let newSkills = person.skills.filter((item) => item.id !== skill.id);
-                newSkills = [...newSkills, skill];
-                setPerson({...person, skills : newSkills});
+                const editedSkills = person.skills.map((item) => {
+                    if (item.id === skill.id) {
+                        item = {...skill};
+                    }
+                    return item;
+                });
+                setPerson({...person, skills : editedSkills});
             }
             setEditId('');
             setSkill(initialSkill);

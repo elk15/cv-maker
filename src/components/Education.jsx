@@ -30,9 +30,13 @@ export default function Education({expandId, handleExpandBtn, editId, setEditId,
                 education.id = uuidv4();
                 setPerson({...person, education: [...person.education, education]});
             } else {
-                let newEducation = person.education.filter((item) => item.id !== education.id);
-                newEducation = [...newEducation, education];
-                setPerson({...person, education : newEducation});
+                const editedEducation = person.education.map((item) => {
+                    if (item.id === education.id) {
+                        item = {...education};
+                    }
+                    return item;
+                });
+                setPerson({...person, education : editedEducation});
             }
             setEditId('');
             setEducation(initialEducation);

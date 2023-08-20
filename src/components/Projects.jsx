@@ -27,9 +27,13 @@ export default function Projects({expandId, handleExpandBtn, editId, setEditId, 
                 project.id = uuidv4();
                 setPerson({...person, projects: [...person.projects, project]});
             } else {
-                let newProjects = person.projects.filter((item) => item.id !== project.id);
-                newProjects = [...newProjects, project];
-                setPerson({...person, projects : newProjects});
+                const editedProjects = person.projects.map((item) => {
+                    if (item.id === project.id) {
+                        item = {...project};
+                    }
+                    return item;
+                });
+                setPerson({...person, projects : editedProjects});
             }
             setEditId('');
             setProject(initialProject);
