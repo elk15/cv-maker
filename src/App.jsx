@@ -10,6 +10,7 @@ import Certificates from './components/Certificates';
 import Links from './components/Links';
 import ResumePreview from './components/ResumePreview';
 import { v4 as uuidv4 } from 'uuid';
+import DownloadButton from './components/DownloadButton';
 
 const education1 = uuidv4();
 const education2 = uuidv4();
@@ -147,6 +148,8 @@ function App() {
     setPerson(initialPerson);
   }
 
+  const fullName = person.firstName + '_' + person.lastName;
+
   return (
     <div className='container'>
      <main id="edit-container">
@@ -154,7 +157,7 @@ function App() {
         <header id="header-btns">
           <button className='header-button' onClick={resetResume}>Clear Resume</button>
           <button className='header-button' onClick={loadExample}>Load Example</button>
-          <button className='header-button'>Download</button>
+          <DownloadButton name={fullName}/>
         </header>
       </Section>
       <Section canDisplay={handleDisplaySections('personal-info')}>

@@ -10,14 +10,15 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
 }
 
 #preview-container {
-  /* border: 1px solid black; */
-  width: 21cm;
-  height: 29.7cm;
+  width: 210mm;
+  height: 297mm;
   display: grid;
-  grid-template-columns: 8cm 1fr;
+  grid-template-columns: 80mm 130mm;
+  grid-template-rows: 297mm;
   background: linear-gradient(176deg, rgba(187,115,224,1) 0%, rgba(255,141,219,1) 100%);
 }
 
@@ -85,6 +86,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
 
 @media screen and (max-width: 1000px) {
   #preview-container {
