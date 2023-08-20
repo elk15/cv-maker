@@ -21,12 +21,6 @@
   background: linear-gradient(176deg, rgba(187,115,224,1) 0%, rgba(255,141,219,1) 100%);
 }
 
-@media screen and (max-width: 1000px) {
-  #preview-container {
-    display: none;
-  }
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -74,5 +68,34 @@
 .form .save-btn {
   background: linear-gradient(163deg, rgba(236,0,140,1) 0%, rgba(252,103,103,1) 100%);
   color: #FFF;
+}
+
+#header-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-button {
+  padding: 10px;
+  background: linear-gradient(163deg, rgba(236,0,140,1) 0%, rgba(252,103,103,1) 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  #preview-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #header-btns {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 

@@ -99,6 +99,29 @@ const initialPerson = {
   linkedin: 'https://www.linkedin.com/',
 }
 
+const emptyPerson = {
+  firstName : '',
+  lastName: '',
+  role: '',
+  email: '',
+  phone: '',
+  location: '',
+  website: '',
+  portfolio: '',
+  education : [
+  ],
+  work: [
+  ],
+  projects: [
+  ],
+  skills: [
+  ],
+  certificates: [
+  ],
+  github: '',
+  linkedin: '',
+}
+
 function App() {
   const [expandId, setExpandId] = useState('');
   const [editId, setEditId] = useState('');
@@ -116,13 +139,23 @@ function App() {
     setEditId(e.currentTarget.dataset.id);
   }
 
+  const resetResume = () => {
+    setPerson(emptyPerson);
+  }
+
+  const loadExample = () => {
+    setPerson(initialPerson);
+  }
+
   return (
     <div className='container'>
      <main id="edit-container">
       <Section>
-        <button>Clear Resume</button>
-        <button>Load Example</button>
-        <button>Download Resume</button>
+        <header id="header-btns">
+          <button className='header-button' onClick={resetResume}>Clear Resume</button>
+          <button className='header-button' onClick={loadExample}>Load Example</button>
+          <button className='header-button'>Download</button>
+        </header>
       </Section>
       <Section canDisplay={handleDisplaySections('personal-info')}>
         <PersonalInfo 
